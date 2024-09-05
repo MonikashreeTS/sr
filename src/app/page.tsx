@@ -1,101 +1,381 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import { useState } from "react";
+
+const page = () => {
+  const [sameAsAbove, setSameAsAbove] = useState(false);
+  const [address, setAddress] = useState({
+    line1: "",
+    line2: "",
+    pin: "",
+  });
+  const [DOB, setDOB] = useState(new Date().toISOString().split("T")[0]);
+
+  const handleCheckboxChange = () => {
+    setSameAsAbove(!sameAsAbove);
+  };
+
+  const handleAddressChange = (e: any) => {
+    const { name, value } = e.target;
+    setAddress({ ...address, [name]: value });
+  };
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="">
+      <form action="">
+        <div className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-md my-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Name Prefix */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="prefix"
+              >
+                Name Prefix
+              </label>
+              <select
+                name="prefix"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+              >
+                <option value="Mr.">Mr.</option>
+                <option value="Mrs.">Mrs.</option>
+                <option value="Dr.">Dr.</option>
+                <option value="Prof.">Prof.</option>
+              </select>
+            </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            {/* First Name */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="first-name"
+              >
+                First Name
+              </label>
+              <input
+                type="text"
+                id="first-name"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="First Name"
+              />
+            </div>
+
+            {/* Middle Name */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="middle-name"
+              >
+                Middle Name
+              </label>
+              <input
+                type="text"
+                id="middle-name"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Middle Name"
+              />
+            </div>
+
+            {/* Last Name */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="last-name"
+              >
+                Last Name
+              </label>
+              <input
+                type="text"
+                id="last-name"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Last Name"
+              />
+            </div>
+
+            {/* DOB */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="dob"
+              >
+                Date of Birth (DOB)
+              </label>
+              <input
+                type="date"
+                id="dob"
+                value={DOB}
+                onChange={(e) => setDOB(e.target.value)}
+                className="block w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+
+            {/* Age */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="middle-name"
+              >
+                Age
+              </label>
+              <input
+                type="number"
+                id="Age"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Age"
+                disabled={true}
+                value={new Date().getFullYear() - new Date(DOB).getFullYear()}
+              />
+            </div>
+
+            {/* Email */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="email"
+              >
+                Mail ID
+              </label>
+              <input
+                type="email"
+                id="email"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Email"
+              />
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        <div className="p-6 max-w-4xl mx-auto bg-white shadow-md rounded-md my-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Employee ID */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="employee-id"
+              >
+                Employee ID
+              </label>
+              <input
+                type="text"
+                id="employee-id"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Employee ID"
+              />
+            </div>
+
+            {/* AICTE Faculty ID */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="aicte-id"
+              >
+                AICTE Faculty ID
+              </label>
+              <input
+                type="text"
+                id="aicte-id"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="AICTE Faculty ID"
+              />
+            </div>
+
+            {/* Vidwan ID */}
+            <div>
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="vidwan-id"
+              >
+                Vidwan ID
+              </label>
+              <input
+                type="text"
+                id="vidwan-id"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Vidwan ID"
+              />
+            </div>
+
+            {/* Address Line 1 */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="address-line1"
+              >
+                Address Line 1
+              </label>
+              <input
+                type="text"
+                id="address-line1"
+                name="line1"
+                value={address.line1}
+                onChange={handleAddressChange}
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Address Line 1"
+              />
+            </div>
+
+            {/* Address Line 2 */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="address-line2"
+              >
+                Address Line 2
+              </label>
+              <input
+                type="text"
+                id="address-line2"
+                name="line2"
+                value={address.line2}
+                onChange={handleAddressChange}
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Address Line 2"
+              />
+            </div>
+
+            {/* PIN */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="pin"
+              >
+                PIN
+              </label>
+              <input
+                type="text"
+                id="pin"
+                name="pin"
+                value={address.pin}
+                onChange={handleAddressChange}
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="PIN"
+              />
+            </div>
+
+            {/* Same as Above Checkbox */}
+            <div className="col-span-2">
+              <label className="block text-gray-700 text-sm font-bold mb-2">
+                <input
+                  type="checkbox"
+                  checked={sameAsAbove}
+                  onChange={handleCheckboxChange}
+                  className="mr-2"
+                />
+                Address for Correspondence Same as Above
+              </label>
+            </div>
+
+            {/* Address for Correspondence */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="corr-line1"
+              >
+                Address for Correspondence Line 1
+              </label>
+              <input
+                type="text"
+                id="corr-line1"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                value={sameAsAbove ? address.line1 : ""}
+                disabled={sameAsAbove}
+                placeholder="Correspondence Address Line 1"
+              />
+            </div>
+
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="corr-line2"
+              >
+                Address for Correspondence Line 2
+              </label>
+              <input
+                type="text"
+                id="corr-line2"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                value={sameAsAbove ? address.line2 : ""}
+                disabled={sameAsAbove}
+                placeholder="Correspondence Address Line 2"
+              />
+            </div>
+
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="corr-pin"
+              >
+                Correspondence PIN
+              </label>
+              <input
+                type="text"
+                id="corr-pin"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                value={sameAsAbove ? address.pin : ""}
+                disabled={sameAsAbove}
+                placeholder="Correspondence PIN"
+              />
+            </div>
+
+            {/* Name of Spouse */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="spouse-name"
+              >
+                Name of Spouse
+              </label>
+              <input
+                type="text"
+                id="spouse-name"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Spouse Name"
+              />
+            </div>
+
+            {/* Mother's Name */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="mother-name"
+              >
+                Mother's Name
+              </label>
+              <input
+                type="text"
+                id="mother-name"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Mother's Name"
+              />
+            </div>
+
+            {/* No. of Dependents */}
+            <div className="col-span-2">
+              <label
+                className="block text-gray-700 text-sm font-bold mb-2"
+                htmlFor="dependents"
+              >
+                No. of Dependents
+              </label>
+              <input
+                type="number"
+                id="dependents"
+                className="block w-full p-2 border border-gray-300 rounded-md"
+                placeholder="Number of Dependents"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="flex flex-row my-10 justify-center gap-2">
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Cancel
+          </button>
+          <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
   );
-}
+};
+
+export default page;
