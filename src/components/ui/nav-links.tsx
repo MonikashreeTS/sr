@@ -14,7 +14,7 @@ export function NavLinks() {
         }`}
         href="/"
       >
-        Personal Details
+        Student-Mentor
       </Link>
 
       <Link
@@ -23,15 +23,15 @@ export function NavLinks() {
         }`}
         href="/academic-details"
       >
-        Academic Details
+        Subject-Mapping
       </Link>
       <Link
         className={`link hover:underline underline-offset-3 ${
-          pathname === "/research-details" ? "text-purple-500" : ""
+          pathname === "/student-subject" ? "text-purple-500" : ""
         }`}
-        href="/research-details"
+        href="/student-subject"
       >
-        Research Details
+        Student-Subject
       </Link>
     </nav>
   );

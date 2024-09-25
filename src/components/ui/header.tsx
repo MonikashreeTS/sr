@@ -8,7 +8,7 @@ const Header = () => {
       <div className="flex-start">
         <Image src={drait} width={400} height={500} alt="drait logo wide" />
       </div>
-      <div className="text-white font-bold text-3xl">Faculty Details</div>
+      <div className="text-white font-bold text-3xl">Student and Course Registration</div>
     </header>
   );
 };
