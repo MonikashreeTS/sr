@@ -11,7 +11,7 @@ const page = () => {
         <div className="p-6 max-w-4xl mx-auto bg-white border-2 shadow-md rounded-md my-10">
           <div className="grid grid-cols-2 gap-6">
 
-                         {/* Department */}
+           {/* Department */}
             <div>
               <label
                 className="block text-gray-700 text-sm font-bold mb-2"
@@ -99,44 +99,7 @@ const page = () => {
               </select>
             </div>
                                             
-            {/* Student */}
-            <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="Student"
-              >
-                Student USN
-              </label>
-              <input
-                type="text"
-                id="USN"
-                name="StudentName"
-                className="block w-full p-2 border border-gray-300 rounded-md"
-                placeholder="USN"
-              />
-            </div>
-
-            
-            {/* Subjects */}
-            <div>
-              <label
-                className="block text-gray-700 text-sm font-bold mb-2"
-                htmlFor="Subjects"
-              >
-                Subjects
-              </label>
-              <select
-                name="subject"
-                className="block p-2 border border-gray-300 rounded-md w-full"
-              >
-                <option value="Sub1">Sub1</option>
-                <option value="Sub2">Sub2</option>
-                <option value="Sub3">Sub3</option>
-                <option value="Sub4">Sub4</option>
-                <option value="Sub5">Sub5</option>
-                                                      
-              </select>
-            </div>                   
+                           
           </div>
         </div>          
 

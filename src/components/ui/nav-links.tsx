@@ -19,9 +19,9 @@ export function NavLinks() {
 
       <Link
         className={`link hover:underline underline-offset-3 ${
-          pathname === "/academic-details" ? "text-purple-500" : ""
+          pathname === "/subject-mapping" ? "text-purple-500" : ""
         }`}
-        href="/academic-details"
+        href="/subject-mapping"
       >
         Subject-Mapping
       </Link>
